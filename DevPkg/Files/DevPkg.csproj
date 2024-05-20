@@ -386,13 +386,13 @@
 			<SpecificVersion>False</SpecificVersion>
 			<Private>False</Private>
 		</Reference>
-		<Reference Include="CrtWebhookServiceBase">
-			<HintPath>$(RelativePkgFolderPath)/CrtWebhookServiceBase/$(StandalonePackageAssemblyPath)/CrtWebhookServiceBase.dll</HintPath>
+		<Reference Include="CrtWebFormBase">
+			<HintPath>$(RelativePkgFolderPath)/CrtWebFormBase/$(StandalonePackageAssemblyPath)/CrtWebFormBase.dll</HintPath>
 			<SpecificVersion>False</SpecificVersion>
 			<Private>False</Private>
 		</Reference>
-		<Reference Include="CrtWebFormBase">
-			<HintPath>$(RelativePkgFolderPath)/CrtWebFormBase/$(StandalonePackageAssemblyPath)/CrtWebFormBase.dll</HintPath>
+		<Reference Include="CrtWebhookServiceBase">
+			<HintPath>$(RelativePkgFolderPath)/CrtWebhookServiceBase/$(StandalonePackageAssemblyPath)/CrtWebhookServiceBase.dll</HintPath>
 			<SpecificVersion>False</SpecificVersion>
 			<Private>False</Private>
 		</Reference>
@@ -411,11 +411,6 @@
 			<SpecificVersion>False</SpecificVersion>
 			<Private>False</Private>
 		</Reference>
-		<Reference Include="FeatureToggling">
-			<HintPath>$(RelativePkgFolderPath)/FeatureToggling/$(StandalonePackageAssemblyPath)/FeatureToggling.dll</HintPath>
-			<SpecificVersion>False</SpecificVersion>
-			<Private>False</Private>
-		</Reference>
 		<Reference Include="CSP">
 			<HintPath>$(RelativePkgFolderPath)/CSP/$(StandalonePackageAssemblyPath)/CSP.dll</HintPath>
 			<SpecificVersion>False</SpecificVersion>
@@ -428,6 +423,11 @@
 		</Reference>
 		<Reference Include="OpenIdAuth">
 			<HintPath>$(RelativePkgFolderPath)/OpenIdAuth/$(StandalonePackageAssemblyPath)/OpenIdAuth.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="FeatureToggling">
+			<HintPath>$(RelativePkgFolderPath)/FeatureToggling/$(StandalonePackageAssemblyPath)/FeatureToggling.dll</HintPath>
 			<SpecificVersion>False</SpecificVersion>
 			<Private>False</Private>
 		</Reference>
@@ -461,8 +461,23 @@
 			<SpecificVersion>False</SpecificVersion>
 			<Private>False</Private>
 		</Reference>
+		<Reference Include="CrtCustomer360Mobile">
+			<HintPath>$(RelativePkgFolderPath)/CrtCustomer360Mobile/$(StandalonePackageAssemblyPath)/CrtCustomer360Mobile.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="CrtCustomer360App">
+			<HintPath>$(RelativePkgFolderPath)/CrtCustomer360App/$(StandalonePackageAssemblyPath)/CrtCustomer360App.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+			<Private>False</Private>
+		</Reference>
 		<Reference Include="CrtCall">
 			<HintPath>$(RelativePkgFolderPath)/CrtCall/$(StandalonePackageAssemblyPath)/CrtCall.dll</HintPath>
+			<SpecificVersion>False</SpecificVersion>
+			<Private>False</Private>
+		</Reference>
+		<Reference Include="CrtC360InUiV2">
+			<HintPath>$(RelativePkgFolderPath)/CrtC360InUiV2/$(StandalonePackageAssemblyPath)/CrtC360InUiV2.dll</HintPath>
 			<SpecificVersion>False</SpecificVersion>
 			<Private>False</Private>
 		</Reference>
@@ -470,6 +485,13 @@
 	<ItemGroup Label="Standalone package external assembly references" />
 	<ItemGroup Label="Entity Files">
 		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealityTypeClassic/UsrRealityTypeClassic.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealityTypeClassic/UsrRealityTypeClassic.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassic/UsrRealtyClassic.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassic/UsrRealtyClassic.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicFile/UsrRealtyClassicFile.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicFile/UsrRealtyClassicFile.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicFolder/UsrRealtyClassicFolder.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicFolder/UsrRealtyClassicFolder.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicInFolder/UsrRealtyClassicInFolder.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicInFolder/UsrRealtyClassicInFolder.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicInTag/UsrRealtyClassicInTag.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicInTag/UsrRealtyClassicInTag.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicTag/UsrRealtyClassicTag.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicTag/UsrRealtyClassicTag.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyOfferTypeClassic/UsrRealtyOfferTypeClassic.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyOfferTypeClassic/UsrRealtyOfferTypeClassic.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrVwContactAgeDays/UsrVwContactAgeDays.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrVwContactAgeDays/UsrVwContactAgeDays.cs')" />
 	</ItemGroup>
 	<ItemGroup Label="3rd Party References"></ItemGroup>
