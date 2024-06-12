@@ -2,7 +2,7 @@
 <Resources Culture="en-US">
 	<Group Type="String">
 		<Items>
-			<Item Name="Caption" Value="Reality type (ClassicUI)" />
+			<Item Name="Caption" Value="Realty type (ClassicUI)" />
 			<Item Name="Columns.UsrCode.Caption" Value="Code" />
 			<Item Name="Columns.UsrColumn2.Caption" Value="Column" />
 		</Items>

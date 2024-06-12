@@ -1,4 +1,4 @@
-define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/()/**SCHEMA_ARGS*/ {
+define("UsrRealty_FormPage", /**SCHEMA_DEPS*/["@creatio-devkit/common"]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/(sdk)/**SCHEMA_ARGS*/ {
 	return {
 		viewConfigDiff: /**SCHEMA_VIEW_CONFIG_DIFF*/[
 			{
@@ -91,11 +91,50 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 							"showNotification": true,
 							"recordIdProcessParameterName": "RealtyIdParameter1"
 						}
-					}
+					},
+					"icon": "calculator-button-icon"
 				},
 				"parentName": "Button_fgcqs4p",
 				"propertyName": "menuItems",
 				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "CalcMaxPriceMenuItem",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "#ResourceString(CalcMaxPriceMenuItem_caption)#",
+					"visible": true,
+					"clicked": {
+						"request": "usr.RunWebServiceButtonRequest"
+					},
+					"icon": "sum-button-icon"
+				},
+				"parentName": "Button_fgcqs4p",
+				"propertyName": "menuItems",
+				"index": 1
+			},
+			{
+				"operation": "insert",
+				"name": "AddVisitMenuItem",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "#ResourceString(MenuItem_alw6fy5_caption)#",
+					"visible": true,
+					"clicked": {
+						"request": "crt.RunBusinessProcessRequest",
+						"params": {
+							"processName": "UsrAutoAddRealtyVisitProcess",
+							"processRunType": "ForTheSelectedPage",
+							"showNotification": true,
+							"recordIdProcessParameterName": "RealtyIdParameter"
+						}
+					},
+					"icon": "add-button-icon"
+				},
+				"parentName": "Button_fgcqs4p",
+				"propertyName": "menuItems",
+				"index": 2
 			},
 			{
 				"operation": "insert",
@@ -718,7 +757,7 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 							"MySuperValidator": {
 								"type": "usr.DGValidator",
 								"params": {
-									"minValue": 50,
+									"minValue": 1,
 									"message": "#ResourceString(UsrPriceCannotBeLess)#"
 								}
 							}
@@ -732,7 +771,7 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 							"MySuperValidator": {
 								"type": "usr.DGValidator",
 								"params": {
-									"minValue": 100,
+									"minValue": 1,
 									"message": "#ResourceString(UsrAreaCannotBeLess)#"
 								}
 							}
@@ -751,6 +790,11 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 					"PDS_UsrComment_zericqk": {
 						"modelConfig": {
 							"path": "PDS.UsrComment"
+						},
+						"validators": {
+							"required": {
+								"type": "crt.Required"
+							}
 						}
 					},
 					"PDS_UsrManager_sqkdxst": {
@@ -864,7 +908,7 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 					"dependencies": {
 						"GridDetail_f75dy80DS": [
 							{
-								"attributePath": "UsrParentRealty",
+								"attributePath": "UsrOwner",
 								"relationPath": "PDS.Id"
 							}
 						]
@@ -953,9 +997,97 @@ define("UsrRealty_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
                        return next?.handle(request);
 
                 }
+            },
+               {
+        request: "crt.HandleViewModelAttributeChangeRequest",
+        /* The custom implementation of the system query handler. */
+        handler: async (request, next) => {
+            if (request.attributeName === 'PDS_UsrPriceUSD_wf7537a') {
+                const selectedPrice = await request.$context.PDS_UsrPriceUSD_wf7537a;
+                const isPriceGreaterThan = selectedPrice > 20000 ;
+                /* Check the request status. */
+                if (isPriceGreaterThan) {
+                    /* If the price is greater than 20000 then, apply the required validator to the Comment attribute. */
+                    request.$context.enableAttributeValidator('PDS_UsrComment_zericqk', 'required');
+                } else {
+                    /* Do not apply the required validator to the Comment attribute for price less than 20000. */
+                    request.$context.disableAttributeValidator('PDS_UsrComment_zericqk', 'required');
+                }
             }
+            /* Call the next handler if it exists and return its result. */
+            return next?.handle(request);
+        }
+    },           
 
-			
+          {
+
+				request: "usr.RunWebServiceButtonRequest",
+				/* Implementation of the custom query handler. */
+				handler: async (request, next) => {
+					this.console.log("Run web service button works...");
+ 
+                  
+					// get id from type lookup type object
+					var typeObject = await request.$context.PDS_UsrType_xlmo5d5;
+					var typeId = "";
+					if (typeObject) {
+						typeId = typeObject.value;
+					}
+                  
+
+					// get id from type lookup offer type object
+
+					var offerTypeObject = await request.$context.PDS_UsrOfferType_66up9j8;
+
+					var offerTypeId = "";
+
+					if (offerTypeObject)
+                    {
+						offerTypeId = offerTypeObject.value;
+
+					}
+                  
+                    /* Create an instance of the HTTP client from @creatio-devkit/common. */
+					const httpClientService = new sdk.HttpClientService();
+                  
+
+					/* Specify the URL to retrieve the current rate. Use the coindesk.com external service. */
+
+					const baseUrl = Terrasoft.utils.uri.getConfigurationWebServiceBaseUrl();
+
+					const transferName = "rest";
+
+					const serviceName = "RealtyService";
+
+					const methodName = "GetMinPriceByTypeId";
+
+					const endpoint = Terrasoft.combinePath(baseUrl, transferName, serviceName, methodName);
+                  
+					//const endpoint = "http://in-9knz2j3:9010/0/rest/RealtyService/GetMinPriceByTypeId";
+
+					/* Send a POST HTTP request. The HTTP client converts the response body from JSON to a JS object automatically. */
+      					var params = {
+
+						realtyTypeId: typeId,
+
+						realtyOfferTypeId: offerTypeId,
+
+						entityName: "UsrRealty"
+
+					};
+
+					const response = await httpClientService.post(endpoint, params);
+                    this.console.log("response min price = " + response.body.GetMinPriceByTypeIdResult);
+
+					/* Call the next handler if it exists and return its result. */
+
+					return next?.handle(request);
+
+				}
+
+			},
+
+          
         ]/**SCHEMA_HANDLERS*/,
 		converters: /**SCHEMA_CONVERTERS*/{}/**SCHEMA_CONVERTERS*/,
 		validators: /**SCHEMA_VALIDATORS*/{

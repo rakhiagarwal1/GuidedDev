@@ -18,6 +18,10 @@
 = MetaData.Schema.EG1.BK4.["8140d7e7-fb91-4999-8347-543345440efb"].CK2.["c803a450-c8dc-47a4-b704-7125c23db317"].BL7 "53818048-7868-48f6-ada0-0ebaa65af628"
 = MetaData.Schema.EG1.JC1 []
 = MetaData.Schema.D8 "1bab9dcf-17d5-49f8-9536-8e0064f1dce0"
++ MetaData.Schema.D29 "null"
++ MetaData.Schema.D30 "null"
++ MetaData.Schema.D31 "null"
++ MetaData.Schema.D38 true
 + MetaData.Schema.D2 {
   "UId": "2c7e1d8c-8e98-1147-278e-aa1cdd7156ec",
   "A2": "UsrComment",
@@ -53,7 +57,7 @@
 }
 + MetaData.Schema.D2 {
   "UId": "b4dd9c2f-2d9a-13ed-e182-22f19427447b",
-  "A2": "UsrParentRealty",
+  "A2": "UsrOwner",
   "A3": "e80c3dcb-2095-45f7-b656-9894e1573e4e",
   "A4": "e80c3dcb-2095-45f7-b656-9894e1573e4e",
   "A5": "d6c58dd1-7019-4685-9544-e6999ec83e25",
@@ -63,8 +67,8 @@
   "E6": true,
   "E20": true,
   "E9": true,
-  "E17": "UsrParentRealtyId",
-  "E18": "UsrParentRealtyUsrName"
+  "E17": "UsrOwnerId",
+  "E18": "UsrOwnerUsrName"
 }
 ~ MetaData.Schema.D2 ["ae0e45ca-c495-4fe7-a39d-3ab7278e1617","e80190a5-03b2-4095-90f7-a193a960adee","ebf6bb93-8aa6-4a01-900d-c6ea67affe21","9928edec-4272-425a-93bb-48743fee4b04","3015559e-cbc6-406a-88af-07f7930be832","3fabd836-6a53-4d8d-9069-6df88d9dae1e","2c7e1d8c-8e98-1147-278e-aa1cdd7156ec","120f63fc-2312-346b-2afa-bec1367502bf","14c8f927-774f-a889-b3bb-e21a057b6885","b4dd9c2f-2d9a-13ed-e182-22f19427447b"]
 = MetaData.Schema.D20.A2 "UsrRealtyVisitEvents"

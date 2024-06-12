@@ -484,7 +484,6 @@
 	</ItemGroup>
 	<ItemGroup Label="Standalone package external assembly references" />
 	<ItemGroup Label="Entity Files">
-		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealityTypeClassic/UsrRealityTypeClassic.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealityTypeClassic/UsrRealityTypeClassic.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassic/UsrRealtyClassic.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassic/UsrRealtyClassic.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicFile/UsrRealtyClassicFile.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicFile/UsrRealtyClassicFile.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicFolder/UsrRealtyClassicFolder.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicFolder/UsrRealtyClassicFolder.cs')" />
@@ -492,6 +491,7 @@
 		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicInTag/UsrRealtyClassicInTag.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicInTag/UsrRealtyClassicInTag.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicTag/UsrRealtyClassicTag.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyClassicTag/UsrRealtyClassicTag.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyOfferTypeClassic/UsrRealtyOfferTypeClassic.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyOfferTypeClassic/UsrRealtyOfferTypeClassic.cs')" />
+		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyTypeClassic/UsrRealtyTypeClassic.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrRealtyTypeClassic/UsrRealtyTypeClassic.cs')" />
 		<Compile Remove="$(RelativePkgFolderPath)/DevPkg/Schemas/UsrVwContactAgeDays/UsrVwContactAgeDays.cs" Condition="Exists('$(RelativePkgFolderPath)/DevPkg/Schemas/UsrVwContactAgeDays/UsrVwContactAgeDays.cs')" />
 	</ItemGroup>
 	<ItemGroup Label="3rd Party References"></ItemGroup>
